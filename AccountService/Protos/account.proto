@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccountService";
+
+package account;
+
+service Account {
+	rpc SetUser (UserSetRequest) returns (UserSetResponse) {}
+	rpc GetUser (UserGetRequest) returns (UserGetResponse) {}
+	rpc ResetPasswordRequest (PasswordResetRequest) returns (PasswordResetRequestResponse) {}
+	rpc SetPassword (PasswordSetRequest) returns (PasswordSetResponse) {}
+}
+
+message UserSetRequest {
+	string Name = 1;
+	string EmailAddress = 2;
+	string Password = 3;
+}
+
+message UserSetResponse {
+	bool Success = 1;
+}
+
+message UserGetRequest {
+	string EmailAddress = 1;
+	string Password = 2;
+}
+
+message UserGetResponse {
+	bool Success = 1;
+}
+
+message PasswordResetRequest {
+	string EmailAddress = 1;
+	string Password = 2;
+}
+
+message PasswordResetRequestResponse {
+	bool Success = 1;
+}
+
+message PasswordSetRequest {
+	string Guid = 1;
+	string Password = 2;
+}
+
+message PasswordSetResponse {
+	bool Success = 1;
+}
